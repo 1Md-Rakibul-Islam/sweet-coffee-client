@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import JobPortalBanner from "./Banner";
+import Banner from "./Banner";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Banner section */}
-      <JobPortalBanner />
+      <Banner />
 
       {/* Service section */}
       <section className="bg-white py-12">
