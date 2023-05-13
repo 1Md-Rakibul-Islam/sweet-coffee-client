@@ -8,7 +8,7 @@ export const productsAPI = () => {
       } = useQuery({
         queryKey: ["Products"],
         queryFn: async () => {
-          const res = await fetch("https://sokher-furniture-1md-rakibul-islam.vercel.app/products");
+          const res = await fetch("product.json");
           const data = await res.json();
           return data;
         },

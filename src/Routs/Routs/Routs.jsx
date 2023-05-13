@@ -10,7 +10,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Categories from "../../Pages/Categories/Categories";
 import Blogs from "../../Pages/Bolgs/Blogs";
-import JobDetails from "../../Components/JobDetails";
+import JobDetails from "../../Components/ProductDetails";
 import Service from "../../Pages/Service/Service";
 
 
@@ -38,8 +38,8 @@ export const router = createBrowserRouter([
         element: <JobDetails></JobDetails>
       },
       {
-        path: "/blogs",
-        element: <Blogs></Blogs>,
+        path: "/products",
+        element: <Products></Products>,
       },
       {
         path: "/about",

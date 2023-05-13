@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import JobCard from '../../Components/JobCard';
+import JobCard from '../../Components/ProductCard';
 
 const Categories = () => {
     const jobs = useLoaderData();
