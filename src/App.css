@@ -5,3 +5,16 @@
   /* text-align: center; */
 }
 
+.login {
+  background-image: url("../src/assets/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.register {
+  background-image: url("../src/assets/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

@@ -37,8 +37,9 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
-        toast.success('Login Successfully')
+        toast.success("Login Successfully");
         setLoginUserEmail(data.email);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -49,40 +50,66 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[650px] min-h-screen flex justify-center items-center">
-      <div className="card border w-80 md:w-96 shadow-2xl p-7">
+    <div className="h-[650px] min-h-screen flex justify-center items-center login ">
+      <div className="border text-white rounded-lg w-80 md:w-96 shadow-2xl p-7">
         <h2 className="text-xl text-center text-primary">Login</h2>
         <form onSubmit={handleSubmit(handelLogin)}>
           <div className="form-control w-full mt-5">
-            <label htmlFor="label">
-              {" "}
-              <span>Email</span>
-            </label>
-            <input
-              {...register("email", {
-                required: "Email address is required",
-              })}
-              className="input input-bordered"
-            />
-            {errors.email && <small className="text-error mt-2">{errors.email?.message}</small>}
+            <div>
+              <label for="name" className="block mb-1 ml-1">
+                Name
+              </label>
+              <input
+                {...register("email", {
+                  required: "Email address is required",
+                })}
+                id="email"
+                type="text"
+                placeholder="Your Email"
+                required=""
+                className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-green-900 bg-black"
+              />
+            </div>
+
+            {errors.email && (
+              <small className="text-error mt-2">{errors.email?.message}</small>
+            )}
           </div>
           <div className="form-control w-full mt-5">
-            <label htmlFor="label">
-              {" "}
-              <span>Password</span>
+            <label for="name" className="block mb-1 ml-1">
+              Password
             </label>
             <input
               {...register("password", {
                 required: "Password required",
-                minLength: { value: 6, message: "Password must be 6 charecters or longer" },
+                minLength: {
+                  value: 6,
+                  message: "Password must be 6 charecters or longer",
+                },
               })}
-              className="input input-bordered"
+              id="email"
+              type="password"
+              placeholder="Your Password"
+              required=""
+              className="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-green-900 bg-black"
             />
-            {errors.password && <small className="text-error mt-2">{errors.password?.message}</small>}
+            {errors.password && (
+              <small className="text-error mt-2">
+                {errors.password?.message}
+              </small>
+            )}
           </div>
           <span>Forget Password?</span>
-          <div>{loginError && <span className="my-2 text-error">{loginError}</span>}</div>
-          <input className="w-full mt-5 btn bg-primary text-white" type="submit" value="Login" />
+          <div>
+            {loginError && (
+              <span className="my-2 text-error">{loginError}</span>
+            )}
+          </div>
+          <input
+            className="w-full mt-5 btn bg-primary px-4 py-2 font-bold rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 bg-green-900 cursor-pointer focus:ring-green-900 hover:ring-green-900 text-white"
+            type="submit"
+            value="Login"
+          />
         </form>
         <p>
           New to Medi Care{" "}
@@ -96,3 +123,29 @@ const Login = () => {
 };
 
 export default Login;
+
+<section className="p-6 text-black">
+  <form
+    novalidate=""
+    className="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow bg-black ng-untouched ng-pristine ng-valid"
+  >
+    <h2 className="w-full text-3xl font-bold leading-tight">Contact us</h2>
+
+    <div>
+      <label for="message" className="block mb-1 ml-1">
+        Message
+      </label>
+      <textarea
+        id="message"
+        type="text"
+        placeholder="Message..."
+        className="block w-full p-2 rounded autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-green-900 bg-black"
+      ></textarea>
+    </div>
+    <div>
+      <button type="submit" className="">
+        Send
+      </button>
+    </div>
+  </form>
+</section>;

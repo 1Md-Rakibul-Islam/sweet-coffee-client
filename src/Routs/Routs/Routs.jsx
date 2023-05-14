@@ -12,6 +12,7 @@ import Categories from "../../Pages/Categories/Categories";
 import Blogs from "../../Pages/Bolgs/Blogs";
 import JobDetails from "../../Components/ProductDetails";
 import Service from "../../Pages/Service/Service";
+import Products from "../../Pages/Products/Products";
 
 
 export const router = createBrowserRouter([
@@ -24,22 +25,13 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/Service",
-        element: <Service></Service>,
-      },
-      {
-        path: "/jobs/category/:categoryName",
-        loader: async ({params}) => await fetch(`https://nexusjobs.vercel.app/jobs/category/${params.categoryName}`),
-        element: <Categories></Categories>,
-      },
-      {
-        path: "/jobs/details/:_id",
+        path: "/product/details/:_id",
         loader:  ({params}) => fetch(`https://nexusjobs.vercel.app/jobs/details/${params._id}`),
         element: <JobDetails></JobDetails>
       },
       {
         path: "/products",
-        element: <Products></Products>,
+        element: <PrivateRoute><Products></Products></PrivateRoute>,
       },
       {
         path: "/about",

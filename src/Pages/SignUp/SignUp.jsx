@@ -23,10 +23,6 @@ const SignUp = () => {
   const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
-  // const [buyer, setBuyer] = useState("");
-  // const [isBuyer, isBuyerLoading] = useBuyer(buyer);
-
-  // console.log(token, "gvjvhh");
 
   if (token) {
     navigate("/");
@@ -42,7 +38,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-
+        navigate(from, { replace: true });
         const image = data.photo[0];
         const formData = new FormData();
         formData.append("image", image);
@@ -64,7 +60,7 @@ const SignUp = () => {
 
               updateUser(userInfo)
                 .then(() => {
-                  saveUser(data.option, data.name, data.email, imageData.data.url);
+                  // saveUser(data.option, data.name, data.email, imageData.data.url);
                 })
                 .catch((error) => console.log(error));
             }
@@ -124,8 +120,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="md:w-[800px] md:mx-auto mx-5 h-[720px] min-h-screen flex justify-center items-center">
-      <div className="card w-full border shadow-2xl p-7">
+    <div className="w-full  min-h-screen flex justify-center items-center register">
+      <div className="card md:w-[800px] md:mx-auto mx-5 h-[720px] border shadow-2xl p-7">
         <h2 className="text-3xl my-5 text-center text-primary">Sign Up</h2>
         <form onSubmit={handleSubmit(handelSignUp)} calssName="card">
           <div className="grid justify-center gap-3 grid-cols-1 md:grid-cols-2">
@@ -152,28 +148,6 @@ const SignUp = () => {
                 type="file"
                 className="file-input file-input-bordered"
               />
-              {errors?.email && <small className="text-error mt-2">{errors.email?.message}</small>}
-            </div>
-            <div className="form-control">
-              <label htmlFor="label">
-                <span>Buyer/Seller</span>
-              </label>
-              <select
-                {...register("option", {
-                  required: true,
-                })}
-                className="select select-bordered"
-              >
-                <option disabled selected>
-                  Who are you?
-                </option>
-                <option value="employee" selected>
-                  Employee
-                </option>
-                <option value="recruiter">
-                  Recruiter
-                </option>
-              </select>
               {errors?.email && <small className="text-error mt-2">{errors.email?.message}</small>}
             </div>
             <div className="form-control">
